@@ -14,6 +14,7 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { API_BASE } from '../config';
 
 export default function FaceVerificationPanel() {
   const [docFile, setDocFile] = useState(null);
@@ -62,8 +63,7 @@ export default function FaceVerificationPanel() {
       formData.append('doc_image', docFile);
       formData.append('capture_image', captureFile);
 
-      // Point to our unified backend
-      const response = await axios.post('http://localhost:8000/api/v1/face-verify', formData, {
+      const response = await axios.post(`${API_BASE}/face-verify`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setResult(response.data);

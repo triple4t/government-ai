@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Upload, FileText, Loader2, CheckCircle, AlertCircle, RotateCcw } from 'lucide-react';
+import { API_BASE } from '../config';
 
 const ACCEPT = '.pdf,.doc,.docx,.png,.jpg,.jpeg,.tiff';
-const API_SUMMARIZE = 'http://localhost:8000/api/v1/summarize';
+const API_SUMMARIZE = `${API_BASE}/summarize`;
 const STORAGE_KEY = 'gov-ai-document-summary';
 
 function loadPersistedSummary() {

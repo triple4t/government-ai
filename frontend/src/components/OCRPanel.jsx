@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE } from '../config';
 import { 
   Upload, 
   FileText, 
@@ -126,7 +127,7 @@ export default function OCRPanel() {
 
     try {
       // Point to the unified backend endpoint
-      const response = await axios.post('http://localhost:8000/api/v1/document-ocr', formData, {
+      const response = await axios.post(`${API_BASE}/document-ocr`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 

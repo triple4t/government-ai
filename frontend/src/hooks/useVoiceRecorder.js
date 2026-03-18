@@ -1,6 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
-
-const API_BASE = 'http://localhost:8000/api/v1';
+import { API_BASE, getWebSocketBase } from '../config';
 
 /**
  * Custom hook for voice recording and backend communication.
@@ -32,8 +31,7 @@ export function useVoiceRecorder() {
       transcriptRef.current = '';
       setStatus({ type: 'info', message: '🎙️ Requesting microphone access...' });
 
-      // Open WebSocket to backend proxy
-      const wsUrl = `ws://localhost:8000/api/v1/stream-stt?language=${language}`;
+      const wsUrl = `${getWebSocketBase()}/api/v1/stream-stt?language=${language}`;
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 
